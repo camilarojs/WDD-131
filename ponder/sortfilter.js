@@ -1,68 +1,78 @@
 
-let nums = [14, 25, 3, 1];
-
-function numberCompare(a, b) {
-  return a - b;
-}
-
-console.log(nums.sort(numberCompare));
-
-
-const simpleList = ["oranges", "grapes", "lemons", "apples", "Bananas", "watermelons", "coconuts", "broccoli", "mango"];
-
-console.log(simpleList.sort());
-
-let lowerList = simpleList.map(function (fruit) {
-  return fruit.toLowerCase();
-});
-
-console.log(lowerList.sort());
-
-let searchTerm = "apples";
-
-let filterFruit = lowerList.filter(function (fruit) {
-  return fruit.includes(searchTerm);
-});
-
-console.log(filterFruit);
-
-
-function compareFn(a, b) {
-  if (a.productName < b.productName) {
-    return -1;
-  } else if (a.productName > b.productName) {
-    return 1;
+const hikes = [
+  {
+    name: "Bechler Falls",
+    distance: "3 miles",
+    tags: ["Easy", "Yellowstone", "Waterfall"],
+    description: "Beautiful short hike in Yellowstone along the Bechler river"
+  },
+  {
+    name: "Teton Canyon",
+    distance: "3 miles",
+    tags: ["Easy", "Tetons"],
+    description: "Beautiful short or long hike through Teton Canyon"
+  },
+  {
+    name: "Denanda Falls",
+    distance: "7 miles",
+    tags: ["Moderate", "Yellowstone", "Waterfall"],
+    description: "Beautiful hike through Bechler meadows"
+  },
+  {
+    name: "Coffee Pot Rapids",
+    distance: "2.2 miles",
+    tags: ["Easy"],
+    description: "Beautiful hike along the Snake River"
+  },
+  {
+    name: "Menan Butte",
+    distance: "3.4 miles",
+    tags: ["Moderate", "View"],
+    description: "A steep climb to a volcanic butte"
   }
-  return 0;
+];
+
+function getMiles(distance) {
+  return parseFloat(distance);
 }
 
-const products = [
-  { productName: "Wireless Mouse", price: 29.99 },
-  { productName: "Bluetooth Keyboard", price: 49.99 },
-  { productName: "Laptop Stand", price: 39.99 }
-];
+function searchHikes(list, query) {
+  const q = query.toLowerCase();
 
-console.log(products.sort(compareFn));
+  function matches(hike) {
+    const inName = hike.name.toLowerCase().includes(q);
+    const inDesc = hike.description.toLowerCase().includes(q);
 
+    const inTags = hike.tags.find(tag =>
+      tag.toLowerCase().includes(q)
+    );
 
-const animals = [
-  { name: "Lion", traits: ["brave", "strong", "fierce", "wild"] },
-  { name: "Elephant", traits: ["large", "gentle", "smart", "wild"] },
-  { name: "Fox", traits: ["sly", "quick", "clever", "wild"] },
-  { name: "Dog", traits: ["loyal", "friendly", "playful", "cuddly"] },
-  { name: "Cat", traits: ["quiet", "independent", "curious", "cuddly"] }
-];
+    return inName || inDesc || inTags;
+  }
 
-let query = "lion";
-let filteredList = animals.filter(function (item) {
-  return item.name.toLowerCase().includes(query.toLowerCase());
+  const filtered = list.filter(matches);
+
+  filtered.sort((a, b) => getMiles(a.distance) - getMiles(b.distance));
+
+  return filtered;
+}
+
+function renderHikes(list) {
+  const ul = document.getElementById("hikeList");
+  ul.innerHTML = "";
+
+  list.forEach(hike => {
+    const li = document.createElement("li");
+    li.textContent = `${hike.name} – ${hike.distance}`;
+    ul.appendChild(li);
+  });
+}
+
+const input = document.getElementById("searchInput");
+
+input.addEventListener("input", () => {
+  const results = searchHikes(hikes, input.value);
+  renderHikes(results);
 });
-console.log(filteredList);
 
-let queryTrait = "strong";
-let filteredTraits = animals.filter(function (item) {
-  return item.traits.find(trait =>
-    trait.toLowerCase().includes(queryTrait.toLowerCase())
-  );
-});
-console.log(filteredTraits);
+renderHikes(hikes);
