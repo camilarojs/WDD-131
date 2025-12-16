@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StudyBuddy | Planner</title>
+  <meta name="author" content="Camila Rojas" />
+  <meta name="description" content="Use the StudyBuddy planner to add tasks, mark them complete, and stay organized." />
+  <link rel="stylesheet" href="styles.css" />
+  <script defer type="module" src="js/main.js"></script>
+</head>
+
+<body>
+  <header class="header">
+    <div class="container header-content">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="images/StudyBuddy Logo.png" alt="StudyBuddy logo" />
+      </a>
+
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a class="active" href="planner.html">Planner</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="page-title">
+      <div class="container">
+        <h1>Your Planner</h1>
+        <p>
+          Keep track of your assignments and study tasks. Add new tasks, mark them as done,
+          and stay organized throughout the week.
+        </p>
+      </div>
+    </section>
+
+    <section class="container grid">
+      <section class="card">
+        <h2>Add a new task</h2>
+
+        <form class="task-form">
+          <label>
+            Task Name
+            <input type="text" name="taskName" placeholder="Example: Math HW" required />
+          </label>
+
+          <label>
+            Class / Subject
+            <input type="text" name="subject" placeholder="Example: Calculus" required />
+          </label>
+
+          <label>
+            Due Date
+            <input type="date" name="dueDate" required />
+          </label>
+
+          <label>
+            Notes (optional)
+            <textarea name="notes" rows="3" placeholder="Extra details..."></textarea>
+          </label>
+
+          <button class="btn" type="submit">Add Task</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Your Tasks</h2>
+
+        <div class="filters">
+          <button type="button" class="filter-btn active" data-filter="all">All Tasks</button>
+          <button type="button" class="filter-btn" data-filter="completed">Completed</button>
+          <button type="button" class="filter-btn" data-filter="upcoming">Upcoming</button>
+        </div>
+
+        <div class="task-list">
+          <p class="muted">No tasks yet. Add one on the left!</p>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 StudyBuddy</p>
+    </div>
+  </footer>
+</body>
+</html>

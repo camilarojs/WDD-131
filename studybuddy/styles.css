@@ -1,0 +1,275 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600;700&display=swap");
+
+:root {
+  --primary: #004aad;
+  --secondary: #ffffff;
+  --accent1: #d8e7ff;
+  --accent2: #002e6d;
+  --heading-font: "Poppins", sans-serif;
+  --body-font: "Inter", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--body-font);
+  color: var(--accent2);
+  background: var(--secondary);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.header {
+  background: var(--secondary);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.brand-logo {
+  width: 34px;
+  height: 34px;
+}
+
+.nav {
+  display: flex;
+  gap: 18px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.nav a.active {
+  text-decoration: underline;
+}
+
+.hero {
+  background: var(--accent1);
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-family: var(--heading-font);
+  color: var(--primary);
+  font-size: 48px;
+  margin: 0 0 14px;
+}
+
+.hero p {
+  margin: 0 0 24px;
+  font-size: 18px;
+}
+
+.btn {
+  background: var(--primary);
+  color: var(--secondary);
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.hero-image {
+  background: var(--accent1);
+  padding: 30px 0 60px;
+}
+
+.image-box {
+  display: flex;
+  justify-content: center;
+}
+
+.image-box img {
+  width: 100%;
+  max-width: 550px;
+  border-radius: 8px;
+}
+
+.main {
+  padding-bottom: 40px;
+}
+
+.page-title {
+  background: var(--accent1);
+  text-align: center;
+  padding: 40px 0;
+}
+
+.page-title h1 {
+  font-family: var(--heading-font);
+  color: var(--primary);
+  margin: 0 0 10px;
+}
+
+.page-title p {
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding: 30px 0;
+}
+
+.card {
+  background: var(--secondary);
+  border: 1px solid #c9d7f0;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.card h2 {
+  font-family: var(--heading-font);
+  margin-top: 0;
+  color: var(--accent2);
+}
+
+/* Planner form */
+.task-form label {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.task-form input,
+.task-form textarea {
+  width: 100%;
+  margin-top: 6px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #bfcbe0;
+  font-family: var(--body-font);
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.filter-btn {
+  background: var(--secondary);
+  border: 1px solid #bfcbe0;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.filter-btn.active {
+  background: var(--primary);
+  color: var(--secondary);
+  border-color: var(--primary);
+}
+
+.muted {
+  color: #4b5b77;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px;
+  border: 1px solid #c9d7f0;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.task-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.toggle-btn,
+.delete-btn {
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid #bfcbe0;
+  background: var(--secondary);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* About */
+.about-section {
+  padding: 40px 0;
+}
+
+.about-section.alt {
+  background: var(--accent1);
+}
+
+.about-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: center;
+}
+
+.about-img img {
+  width: 100%;
+  max-width: 420px;
+  display: block;
+  margin: 0 auto;
+  border-radius: 12px;
+}
+
+/* Footer */
+.footer {
+  padding: 16px 0;
+}
+
+.footer p {
+  margin: 0;
+  color: var(--primary);
+  font-weight: 600;
+  text-align: center;
+}
+
+@media (max-width: 800px) {
+  .header-content {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-row {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+}
